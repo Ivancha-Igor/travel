@@ -1,2 +1,40 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <h1 class="center-align">Listing Placements</h1>
+  <div class="row">
+    <% @placements.each do |placement| %>
+      <div class="card">
+        <div class="col s6 l4">
+          <div class="card-image waves-effect waves-block waves-light">
+            <%= placement.photo %>
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">
+              <%= placement.title %>
+              <i class="material-icons right">more_vert</i>
+            </span>
+            <p><%= placement.price %></p>
+            <p><%= placement.address %></p>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">
+              <%= placement.title %>
+              <i class="material-icons right">close</i>
+            </span>
+            <p><%= placement.description %></p>
+          </div>
+
+          <div class="actions">
+            <%= link_to 'Show', placement, class: 'waves-effect waves-light btn' %>
+            <%= link_to 'Edit', edit_placement_path(placement), class: 'waves-effect waves-light btn' %>
+            <%= link_to 'Destroy', placement, method: :delete, data: { confirm: 'Are you sure?' }, class: 'waves-effect waves-light btn' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+  <div class="section">
+    <%= link_to 'New Placement', new_placement_path, class: 'waves-effect waves-light btn' %>
+  </div>
+</div>
