@@ -22,3 +22,5 @@ group :development do
 end
 
 gem 'materialize-sass'
+gem 'carrierwave'
+gem 'mini_magick'
