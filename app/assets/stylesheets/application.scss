@@ -15,3 +15,12 @@
  */
 
 @import "materialize";
+
+@mixin font-size($sizeValue: 1.6) {
+  font-size: ($sizeValue * 10) + px;
+  font-size: $sizeValue + rem;
+}
+
+h1 {
+  @include font-size(3.5);
+}
