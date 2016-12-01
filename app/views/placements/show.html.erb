@@ -1,29 +1,31 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @placement.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @placement.description %>
-</p>
-
-<p>
-  <strong>Photo:</strong>
-  <%= image_tag @placement.photo_url, class: 'responsive-img' %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @placement.price %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @placement.address %>
-</p>
-
-<%= link_to 'Edit', edit_placement_path(@placement) %> |
-<%= link_to 'Back', root_path %>
+<div class="col s12">
+  <% content_for(:page_title) do %>
+      <%= @placement.title %>
+  <% end %>
+  <p id="notice"><%= notice %></p>
+  <div class="card">
+    <div class="card-image">
+      <%= image_tag @placement.photo_url, class: 'responsive-img' %>
+    </div>
+    <div class="card-content">
+      <h2 class="card-title center-align">
+        <%= @placement.title %>
+      </h2>
+      <ul class="card-info">
+        <li class="primary-margin">
+          <%= @placement.description %>
+        </li>
+        <li class="right-align primary-margin">
+          <b>Price:</b> <%= show_currency(@placement.price) %>/day
+        </li>
+        <li class="right-align primary-margin">
+          <b>Address:</b> <%= @placement.address %>
+        </li>
+      </ul>
+    </div>
+    <div class="card-action">
+      <%= link_to 'Edit', edit_placement_path(@placement), class: 'waves-effect waves-light btn-flat' %>
+      <%= link_to 'Back', root_path, class: 'waves-effect waves-light btn-flat' %>
+    </div>
+  </div>
+</div>

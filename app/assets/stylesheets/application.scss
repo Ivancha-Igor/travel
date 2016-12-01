@@ -21,6 +21,20 @@
   font-size: $sizeValue + rem;
 }
 
+$indent: 10px;
+
 h1 {
   @include font-size(3.5);
+}
+label {
+  margin: {
+    left: $indent;
+  };
+}
+
+.primary-margin {
+  margin: {
+    top: $indent;
+    bottom: $indent;
+  };
 }

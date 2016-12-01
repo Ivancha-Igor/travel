@@ -1,37 +1,44 @@
-<%= form_for(@placement) do |f| %>
-  <% if @placement.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@placement.errors.count, "error") %> prohibited this placement from being saved:</h2>
+<div class="col s6 offset-s3">
+  <%= form_for(@placement) do |f| %>
+      <% if @placement.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@placement.errors.count, "error") %> prohibited this placement from being saved:</h2>
 
-      <ul>
-      <% @placement.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+            <ul>
+              <% @placement.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :photo %><br>
-    <%= f.file_field :photo %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.number_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+      <div class="input-field">
+        <%= f.text_field :title, class: 'validate' %><br>
+        <%= f.label :title %>
+      </div>
+      <div class="input-field">
+        <%= f.text_area :description %><br>
+        <%= f.label :description %>
+      </div>
+      <div class="file-field input-field">
+        <div class="btn">
+          <span>Photo</span>
+          <%= f.file_field :photo %>
+        </div>
+        <div class="file-path-wrapper">
+          <%= text_field_tag(nil, nil, id: 'photo', placeholder: 'Choose photo', class: 'file-path validate') %>
+        </div>
+      </div>
+      <div class="input-field">
+        <%= f.number_field :price, class: 'validate', min: '1' %><br>
+        <%= f.label :price %>
+      </div>
+      <div class="input-field">
+        <%= f.text_field :address, class: 'validate' %><br>
+        <%= f.label :address %>
+      </div>
+      <div class="actions">
+        <%= f.submit class: 'waves-effect waves-light btn' %>
+      </div>
+  <% end %>
+</div>
