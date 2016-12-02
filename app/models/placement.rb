@@ -12,4 +12,7 @@ class Placement < ActiveRecord::Base
             numericality: {greater_than_or_equal_to: 0.01}
   validates :photo,
             presence: true
+
+  geocoded_by :address
+  after_validation :geocode
 end

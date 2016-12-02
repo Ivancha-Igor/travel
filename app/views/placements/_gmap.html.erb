@@ -1,0 +1,38 @@
+<div id="map" class="map"></div>
+<script>
+    var map;
+    var prev_infowindow =false;
+    function initialize() {
+        var mapOptions = {
+            zoom: 13,
+            center: new google.maps.LatLng(49.441388, 32.064583),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(document.getElementById('map'),
+                mapOptions);
+
+        <% @placements.each do |placement| %>
+        var placementLatLng = new google.maps.LatLng(<%= placement.latitude %>, <%= placement.longitude %>);
+        var contentString = '<%= placement.title %>';
+        var infowindow = new google.maps.InfoWindow({content: contentString});
+        var marker = new google.maps.Marker({
+            position: placementLatLng,
+            map: map,
+            title: '<%= placement.title %>'
+        });
+        google.maps.event.addListener(marker, 'click', getInfoCallback(map, contentString));
+        <% end %>
+    }
+    function getInfoCallback(map, content) {
+        var infowindow = new google.maps.InfoWindow({content: content});
+        return function() {
+            if (prev_infowindow) {
+                prev_infowindow.close();
+            }
+            prev_infowindow = infowindow;
+            infowindow.setContent(content);
+            infowindow.open(map, this);
+        };
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>
