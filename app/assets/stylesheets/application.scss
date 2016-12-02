@@ -31,7 +31,9 @@ label {
     left: $indent;
   };
 }
-
+.map {
+  height: 400px;
+}
 .primary-margin {
   margin: {
     top: $indent;

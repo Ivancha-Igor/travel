@@ -24,3 +24,4 @@ end
 gem 'materialize-sass'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'geocoder'
