@@ -40,3 +40,12 @@ label {
     bottom: $indent;
   };
 }
+.flash {
+  @extend .card-panel;
+  &-alert {
+    @extend .yellow, .lighten-4, .deep-orange-text, .text-accent-4;
+  }
+  &-success {
+    @extend .green, .lighten-4, .green-text, .text-darken-4;
+  }
+}
