@@ -24,8 +24,10 @@
 
         <div class="card-action">
           <%= link_to 'Show', placement, class: 'waves-effect waves-light btn-flat', data: {turbolinks: false} %>
-          <%= link_to 'Edit', edit_placement_path(placement), class: 'waves-effect waves-light btn-flat' %>
-          <%= link_to 'Destroy', placement, method: :delete, data: { confirm: 'Are you sure?' }, class: 'waves-effect waves-light btn-flat' %>
+          <% if current_user && current_user.admin? %>
+              <%= link_to 'Edit', edit_placement_path(placement), class: 'waves-effect waves-light btn-flat' %>
+              <%= link_to 'Destroy', placement, method: :delete, data: { confirm: 'Are you sure?' }, class: 'waves-effect waves-light btn-flat' %>
+          <% end %>
         </div>
       </div>
     </div>
