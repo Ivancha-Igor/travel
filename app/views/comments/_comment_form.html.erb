@@ -1,0 +1,23 @@
+<div class="modal-content">
+  <h4>New comment</h4>
+  <%= form_for([@placement, @placement.comments.build], remote: true) do |f| %>
+      <div class="input-field">
+        <%= f.text_area :body %>
+        <%= f.label :body %>
+      </div>
+
+      <div class="file-field input-field">
+        <div class="btn">
+          <span>Photo</span>
+          <%= f.file_field :photo %>
+        </div>
+        <div class="file-path-wrapper">
+          <%= text_field_tag(nil, nil, id: 'photo', placeholder: 'Choose photo', class: 'file-path validate') %>
+        </div>
+      </div>
+
+      <div class="actions">
+        <%= f.submit class: 'waves-effect waves-light btn' %>
+      </div>
+  <% end %>
+</div>

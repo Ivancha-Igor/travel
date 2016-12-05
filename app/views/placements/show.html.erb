@@ -2,7 +2,7 @@
   <% content_for(:page_title) do %>
       <%= @placement.title %>
   <% end %>
-  <div class="card">
+  <div class="card hoverable">
     <div class="card-image">
       <%= image_tag @placement.photo_url, class: 'responsive-img' %>
     </div>
@@ -25,6 +25,14 @@
     <div class="card-action">
       <%= link_to 'Edit', edit_placement_path(@placement), class: 'waves-effect waves-light btn-flat' %>
       <%= link_to 'Back', root_path, class: 'waves-effect waves-light btn-flat', data: {turbolinks: false} %>
+      <% if user_signed_in? %>
+          <%= link_to 'New comment', new_placement_comment_path(@placement.id), class: 'waves-effect waves-light btn-flat', data: {toggle: 'modal'}, remote: true %>
+      <% end %>
     </div>
   </div>
 </div>
+
+<div class="col s12" id="comment-list">
+  <%= render partial: 'comments/comment_list', locals: {comments: @comments} %>
+</div>
+<div id="modal" class="modal"></div>

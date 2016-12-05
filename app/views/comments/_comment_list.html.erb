@@ -1,0 +1,35 @@
+<% if @placement.comments.empty? %>
+    <div class="card-panel yellow lighten-4 deep-orange-text text-accent-4">
+      There are no comments yet!
+    </div>
+<% else %>
+    <h3 class="center-align thin">Comments about <%= @placement.title %></h3>
+    <% @placement.comments.each do |comment| %>
+
+        <div class="card-panel hoverable">
+          <% if user_signed_in? %>
+            <%= link_to [comment.placement, comment],
+                        class: 'btn-floating btn-large waves-effect waves-light red z-depth-3 right',
+                        remote: true,
+                        data: {confirm: 'Are you sure you want to delete this comment?'},
+                        method: :delete do %>
+                <i class="material-icons">delete</i>
+            <% end %>
+          <% end %>
+          <div class="row valign-wrapper">
+            <% if comment.photo.present? %>
+                <div class="col s4">
+                  <%= image_tag comment.photo_url, class: 'responsive-img materialboxed' %>
+                </div>
+                <div class="col s8">
+                  <p><%= comment.body %></p>
+                </div>
+            <% else %>
+                <div class="col s12">
+                  <p><%= comment.body %></p>
+                </div>
+            <% end %>
+          </div>
+        </div>
+    <% end %>
+<% end %>
