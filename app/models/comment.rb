@@ -7,4 +7,5 @@ class Comment < ActiveRecord::Base
 
   validates :body,
             presence: true
+  validates_presence_of :user
 end
