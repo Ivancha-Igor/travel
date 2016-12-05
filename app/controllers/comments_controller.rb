@@ -24,6 +24,9 @@ class CommentsController < ApplicationController
     if @comment.user == current_user
       flash[:success] = "Comment was deleted!"
       @comment.destroy
+    elsif current_user && current_user.admin?
+      flash[:success] = "Admin deleted this comment!"
+      @comment.destroy
     else
       flash[:alert] = "You aren't owner of this comment!"
       redirect_to :back
