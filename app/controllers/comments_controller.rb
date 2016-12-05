@@ -9,9 +9,13 @@ class CommentsController < ApplicationController
     @placement = Placement.find(params[:placement_id])
     @comment = @placement.comments.build(comment_params)
     @comment.user = current_user
-    @comment.save
-    flash[:success] = "Created new comment!"
-    redirect_to placement_path(@placement)
+    if @comment.save
+      flash[:success] = "Created new comment!"
+      redirect_to placement_path(@placement)
+    else
+      flash[:danger] = "Comment's body can't be empty!"
+      redirect_to placement_path(@placement)
+    end
   end
 
   def destroy
