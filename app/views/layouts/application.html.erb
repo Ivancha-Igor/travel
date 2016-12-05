@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBqi8CgJ3QkkASdnmHDAthMfmnljjZG9gc"></script>
 </head>
-<body onload="initialize()">
+<body>
 
 <div class="container">
   <div class="row">
@@ -17,12 +17,13 @@
         <h1 class="center-align"><%= yield :page_title %></h1>
     <% end %>
     <% if user_signed_in? %>
-    <div class="center-align"><%= current_user.try(:email) %></div>
-    <div class="center-align"><%= link_to 'logout', destroy_user_session_path, method: :delete %></div>
+        <div class="center-align"><%= current_user.try(:email) %></div>
+        <div class="center-align"><%= link_to 'logout', destroy_user_session_path, method: :delete %></div>
     <% end %>
     <%= yield %>
   </div>
 </div>
 
+<%= javascript_include_tag 'comments' %>
 </body>
 </html>
