@@ -1,0 +1,34 @@
+<div class="col s6 offset-s3">
+  <%= form_for(@placement) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <div class="input-field">
+        <%= f.text_field :title, class: 'validate' %><br>
+        <%= f.label :title %>
+      </div>
+      <div class="input-field">
+        <%= f.text_area :description %><br>
+        <%= f.label :description %>
+      </div>
+      <div class="file-field input-field">
+        <div class="btn">
+          <span>Photo</span>
+          <%= f.file_field :photo %>
+        </div>
+        <div class="file-path-wrapper">
+          <%= text_field_tag(nil, nil, id: 'photo', placeholder: 'Choose photo', class: 'file-path validate') %>
+        </div>
+      </div>
+      <div class="input-field">
+        <%= f.number_field :price, class: 'validate', min: '1' %><br>
+        <%= f.label :price %>
+      </div>
+      <div class="input-field">
+        <%= f.text_field :address, class: 'validate' %><br>
+        <%= f.label :address %>
+      </div>
+      <div class="actions">
+        <%= f.submit class: 'waves-effect waves-light btn', id: 'submit' %>
+      </div>
+  <% end %>
+</div>

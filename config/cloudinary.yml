@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dm1mh6uld
+  api_key: '877548686784656'
+  api_secret: b1HwseCSBEin4tHT9QOBoY2wwVQ
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: dm1mh6uld
+  api_key: '877548686784656'
+  api_secret: b1HwseCSBEin4tHT9QOBoY2wwVQ
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: dm1mh6uld
+  api_key: '877548686784656'
+  api_secret: b1HwseCSBEin4tHT9QOBoY2wwVQ
+  enhance_image_tag: true
+  static_image_support: false

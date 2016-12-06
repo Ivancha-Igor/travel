@@ -1,0 +1,27 @@
+<nav>
+  <div class="nav-wrapper">
+    <%= link_to 'Test app', root_path, class: 'brand-logo', data: {turbolinks: false} %>
+    <%= link_to '#', class: 'button-collapse', data: {activates: "mobile-demo"} do %>
+        <i class="material-icons">menu</i>
+    <% end %>
+    <ul class="right hide-on-med-and-down">
+      <% if user_signed_in? %>
+        <li>Welcome <%= current_user.try(:email) %></li>
+        <li><%= link_to 'New placement', new_placement_path %></li>
+        <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+      <% else %>
+          <li><%= link_to 'Log in', new_user_session_path %></li>
+          <li><%= link_to 'Sign up', new_user_registration_path %></li>
+      <% end %>
+    </ul>
+    <ul class="side-nav" id="mobile-demo">
+      <% if user_signed_in? %>
+          <li><%= link_to 'New placement', new_placement_path %></li>
+          <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+      <% else %>
+          <li><%= link_to 'Log in', new_user_session_path %></li>
+          <li><%= link_to 'Sign up', new_user_registration_path %></li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,40 @@
+<div class="col s12">
+  <% content_for(:page_title) do %>
+      <%= @placement.title %>
+  <% end %>
+  <div class="card hoverable">
+    <div class="card-image">
+      <%= image_tag @placement.photo_url, class: 'responsive-img' %>
+    </div>
+    <div class="card-content">
+      <h2 class="card-title center-align">
+        <%= @placement.title %>
+      </h2>
+      <ul class="card-info">
+        <li class="primary-margin">
+          <%= @placement.description %>
+        </li>
+        <li class="right-align primary-margin">
+          <b>Price:</b> <%= show_currency(@placement.price) %>/day
+        </li>
+        <li class="right-align primary-margin">
+          <b>Address:</b> <%= @placement.address %>
+        </li>
+      </ul>
+    </div>
+    <div class="card-action">
+      <% if current_user && current_user.admin? %>
+          <%= link_to 'Edit', edit_placement_path(@placement), class: 'waves-effect waves-light btn-flat' %>
+      <% end %>
+      <%= link_to 'Back', root_path, class: 'waves-effect waves-light btn-flat', data: {turbolinks: false} %>
+      <% if user_signed_in? %>
+          <%= link_to 'New comment', new_placement_comment_path(@placement.id), class: 'waves-effect waves-light btn-flat', data: {toggle: 'modal'}, remote: true %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="col s12" id="comment-list">
+  <%= render partial: 'comments/comment_list', locals: {comments: @comments} %>
+</div>
+<div id="modal" class="modal"></div>

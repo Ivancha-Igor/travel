@@ -1,0 +1,11 @@
+<% content_for(:page_title) do %>
+    Edit <%= @placement.title %>
+<% end %>
+
+<%= render 'form' %>
+
+<div class="col s6 offset-s3 primary-margin">
+  <%= link_to 'Show', @placement, class: 'waves-effect waves-light btn-flat', data: {turbolinks: false} %>
+  <%= link_to 'Back', root_path, class: 'waves-effect waves-light btn-flat', data: {turbolinks: false} %>
+</div>
+

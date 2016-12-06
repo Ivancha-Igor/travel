@@ -13,3 +13,42 @@
  *= require_tree .
  *= require_self
  */
+
+@import "materialize";
+
+@mixin font-size($sizeValue: 1.6) {
+  font-size: ($sizeValue * 10) + px;
+  font-size: $sizeValue + rem;
+}
+
+$indent: 10px;
+
+h1 {
+  @include font-size(3.5);
+}
+label {
+  margin: {
+    left: $indent;
+  };
+}
+.map {
+  height: 400px;
+}
+.primary-margin {
+  margin: {
+    top: $indent;
+    bottom: $indent;
+  };
+}
+.flash {
+  @extend .card-panel;
+  &-alert {
+    @extend .yellow, .lighten-4, .deep-orange-text, .text-accent-4;
+  }
+  &-success {
+    @extend .green, .lighten-4, .green-text, .text-darken-4;
+  }
+  &-danger {
+    @extend .red, .lighten-3, .red-text, .text-darken-4;
+  }
+}
