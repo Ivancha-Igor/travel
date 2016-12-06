@@ -12,13 +12,10 @@
 
 <div class="container">
   <div class="row">
+    <%= render 'layouts/navbar' %>
     <%= render 'shared/flash' %>
     <% if content_for?(:page_title) %>
         <h1 class="center-align"><%= yield :page_title %></h1>
-    <% end %>
-    <% if user_signed_in? %>
-        <div class="center-align"><%= current_user.try(:email) %></div>
-        <div class="center-align"><%= link_to 'logout', destroy_user_session_path, method: :delete %></div>
     <% end %>
     <%= yield %>
   </div>
